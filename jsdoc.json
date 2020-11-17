@@ -1,0 +1,19 @@
+{
+  "docdash": {
+    "search": true,
+    "menu": {                       
+      "Data Graphs": {        
+          "href":"https://datagraphs.com",
+          "target":"_blank",
+          "class":"menu-item",
+          "id":"website_link"
+      },
+      "Github Repo": {        
+        "href":"https://github.com/datalanguage/datagraphs-client-js",
+        "target":"_blank",
+        "class":"menu-item",
+        "id":"website_link"
+      }
+    }
+  }
+}

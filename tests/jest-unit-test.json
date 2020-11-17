@@ -1,0 +1,6 @@
+{
+  "moduleFileExtensions": ["js", "json"],
+  "rootDir": ".",
+  "testRegex": ".spec.js$",
+  "verbose": true
+}

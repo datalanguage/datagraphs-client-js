@@ -1,0 +1,32 @@
+{
+  "name": "@datalanguage/datagraphs-client",
+  "version": "0.1.0",
+  "description": "The Data Graphs Client Lib",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --config --passWithNoTests tests/jest-unit-test.json",
+    "test:changed": "jest -o --config tests/jest-unit-test.json",
+    "test:watch": "jest --watch --config tests/jest-unit-test.json",
+    "test:cov": "jest --coverage",
+    "build:docs": "jsdoc -c ./jsdoc.json --verbose -t node_modules/docdash -d docs --readme ./README.md lib lib/errors",
+    "serve:docs": "http-server docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:datalanguage/datagraphs-client-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "homepage": "https://github.com/datalanguage/datagraphs-client-js",
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "query-string": "^6.13.7"
+  },
+  "devDependencies": {
+    "docdash": "^1.2.0",
+    "http-server": "^0.12.3",
+    "jest": "^24.9.0",
+    "jsdoc": "^3.6.6"
+  }
+}
