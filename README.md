@@ -1,8 +1,8 @@
 # Data Graphs Client Lib #
 
-API Client library for [Data Graphs](datagraphs.com)
+API Client library for [Data Graphs](https://datagraphs.com)
 
-Documentation for the Data Graphs API can be found under the `Developer Docs` section of the [Data Graphs App](app.datagraphs.io)
+Documentation for the Data Graphs API can be found under the `Developer Docs` section of the [Data Graphs App](https://app.datagraphs.io)
 
 ## Install
 
@@ -18,18 +18,39 @@ const Datagraphs = require('datagraphs-client')
 
 // Create the Data Graphs client
 const datagraphs = new DataGraphs();
+```
+## Examples
 
-// Fetch all datasets
+### Fetch all datasets
+
+See https://datalanguage.github.io/datagraphs-client-js/Datasets.html#all
+```js
 const datasets = await datagraphs.datasets.all();
-// Search concepts
+```
+
+### Search concepts
+See https://datalanguage.github.io/datagraphs-client-js/Concepts.html#search
+```js
 const concepts = await datagraphs.concepts.search();
-// Get an individual concept
+```
+
+### Get an individual concept
+See https://datalanguage.github.io/datagraphs-client-js/Concepts.html#get
+```js
 const concept = await datagraphs.concepts.get(conceptId);
-// Create a new concept
+```
+
+### Create a new concept
+See https://datalanguage.github.io/datagraphs-client-js/Concepts.html#create
+```js
 const concept = await datagraphs.concepts.create(datasetId, {
   label: 'My New Concept'
 });
-// Create a new candidate concept
+```
+
+### Create a new candidate concept
+See https://datalanguage.github.io/datagraphs-client-js/Candidates.html#create
+```js
 const candidate = await datagraphs.candidates.create({
   label: 'My New Candidate'
 });
@@ -56,3 +77,7 @@ const datagraphs = new DataGraphs({
   clientSecret: 'pRM6kR.....'
 });
 ```
+
+## Documentation
+
+Full documentation for this library can be found at https://datalanguage.github.io/datagraphs-client-js/
