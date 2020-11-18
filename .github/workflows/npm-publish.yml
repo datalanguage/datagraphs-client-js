@@ -28,6 +28,9 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm ci
+      - run: git config user.name $GITHUB_ACTOR
+      - run: git config user.email gh-actions-${GITHUB_ACTOR}@github.com
+      - run: npm version ${{ github.event.release.tag_name }} -m "Version %s"
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
@@ -42,7 +45,9 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
-      - run: npm version ${{ github.event.release.tag_name }}
+      - run: git config user.name $GITHUB_ACTOR
+      - run: git config user.email gh-actions-${GITHUB_ACTOR}@github.com
+      - run: npm version ${{ github.event.release.tag_name }} -m "Version %s"
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
