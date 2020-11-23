@@ -7,14 +7,14 @@ Documentation for the Data Graphs API can be found under the `Developer Docs` se
 ## Install
 
 ```sh
-npm install --save datagraphs-client
+npm install --save @datalanguage/datagraphs-client
 ```
 
 ## Usage
 
 ```js
 // Require the library
-const Datagraphs = require('datagraphs-client')
+const Datagraphs = require('@datalanguage/datagraphs-client')
 
 // Create the Data Graphs client
 const datagraphs = new DataGraphs();
