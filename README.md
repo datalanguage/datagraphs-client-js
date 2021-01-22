@@ -17,7 +17,7 @@ npm install --save @datalanguage/datagraphs-client
 const Datagraphs = require('@datalanguage/datagraphs-client')
 
 // Create the Data Graphs client
-const datagraphs = new DataGraphs();
+const datagraphs = new Datagraphs();
 ```
 ## Examples
 
