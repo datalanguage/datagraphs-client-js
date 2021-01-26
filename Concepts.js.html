@@ -29,7 +29,7 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h2><a href="https://datagraphs.com" target="_blank" class="menu-item" id="website_link" >Data Graphs</a></h2><h2><a href="https://github.com/datalanguage/datagraphs-client-js" target="_blank" class="menu-item" id="website_link" >Github Repo</a></h2><h3>Classes</h3><ul><li><a href="ApiError.html">ApiError</a></li><li><a href="Candidates.html">Candidates</a><ul class='methods'><li data-type='method'><a href="Candidates.html#create">create</a></li></ul></li><li><a href="Concepts.html">Concepts</a><ul class='methods'><li data-type='method'><a href="Concepts.html#create">create</a></li><li data-type='method'><a href="Concepts.html#get">get</a></li><li data-type='method'><a href="Concepts.html#search">search</a></li></ul></li><li><a href="ConfigurationError.html">ConfigurationError</a></li><li><a href="DataGraphs.html">DataGraphs</a></li><li></li><li><a href="DataGraphsError.html">DataGraphsError</a></li><li><a href="Datasets.html">Datasets</a><ul class='methods'><li data-type='method'><a href="Datasets.html#all">all</a></li></ul></li><li><a href="InvalidUrnError.html">InvalidUrnError</a></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://datagraphs.com" target="_blank" class="menu-item" id="website_link" >Data Graphs</a></h2><h2><a href="https://github.com/datalanguage/datagraphs-client-js" target="_blank" class="menu-item" id="website_link" >Github Repo</a></h2><h3>Classes</h3><ul><li><a href="ApiError.html">ApiError</a></li><li><a href="Candidates.html">Candidates</a><ul class='methods'><li data-type='method'><a href="Candidates.html#create">create</a></li></ul></li><li><a href="Concepts.html">Concepts</a><ul class='methods'><li data-type='method'><a href="Concepts.html#create">create</a></li><li data-type='method'><a href="Concepts.html#get">get</a></li><li data-type='method'><a href="Concepts.html#search">search</a></li><li data-type='method'><a href="Concepts.html#update">update</a></li></ul></li><li><a href="ConfigurationError.html">ConfigurationError</a></li><li><a href="DataGraphs.html">DataGraphs</a></li><li></li><li><a href="DataGraphsError.html">DataGraphsError</a></li><li><a href="Datasets.html">Datasets</a><ul class='methods'><li data-type='method'><a href="Datasets.html#all">all</a></li></ul></li><li><a href="InvalidUrnError.html">InvalidUrnError</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <div id="main">
@@ -44,10 +44,10 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const Api = require('./Api');
-const { forceArray } = require('./utils/arrays');
-const checkCredentials = require('./utils/credentials');
-const { parseConceptId, isUrn, parseDatasetId } = require('./utils/ids');
+            <pre class="prettyprint source linenums"><code>const Api = require("./Api");
+const { forceArray } = require("./utils/arrays");
+const checkCredentials = require("./utils/credentials");
+const { parseConceptId, isUrn, parseDatasetId } = require("./utils/ids");
 
 /**
  * Concepts
@@ -58,7 +58,7 @@ const { parseConceptId, isUrn, parseDatasetId } = require('./utils/ids');
  * @param {string} configuration.clientId - Your DataGraphs application client id
  * @param {string} configuration.clientSecret - Your DataGraphs application client secret
  */
-function Concepts({ accountKey, apiKey, clientId, clientSecret } = {}){
+function Concepts({ accountKey, apiKey, clientId, clientSecret } = {}) {
   const api = new Api({ accountKey, apiKey, clientId, clientSecret });
 
   /**
@@ -78,19 +78,32 @@ function Concepts({ accountKey, apiKey, clientId, clientSecret } = {}){
    * @param {string[]} [options.ids] - List of concept ids to return
    * @returns {ConceptSearchResults} Search Results
    */
-  this.search = ({ dataset = '_all', pageSize, pageNo, sort, embed, filter, q, facets, dataFacets, ids } = {}) => {
+  this.search = ({
+    dataset = "_all",
+    pageSize,
+    pageNo,
+    sort,
+    embed,
+    filter,
+    q,
+    facets,
+    dataFacets,
+    ids,
+  } = {}) => {
     const path = getDatasetPath(dataset);
-    return api.getJson(path, { qs: {
-      pageSize,
-      pageNo,
-      embed: forceArray(embed).join(','),
-      sort,
-      filter,
-      q,
-      facets: forceArray(facets).join(','),
-      dataFacets: forceArray(dataFacets).join(','),
-      ids: forceArray(ids).join(',')
-    } });
+    return api.getJson(path, {
+      qs: {
+        pageSize,
+        pageNo,
+        embed: forceArray(embed).join(","),
+        sort,
+        filter,
+        q,
+        facets: forceArray(facets).join(","),
+        dataFacets: forceArray(dataFacets).join(","),
+        ids: forceArray(ids).join(","),
+      },
+    });
   };
 
   /**
@@ -104,7 +117,9 @@ function Concepts({ accountKey, apiKey, clientId, clientSecret } = {}){
    */
   this.get = (id, { embed } = {}) => {
     const { type, key } = parseConceptId(id);
-    return api.getJson(`${type}/${key}`, { qs: { embed: forceArray(embed).join(',') } });
+    return api.getJson(`${type}/${key}`, {
+      qs: { embed: forceArray(embed).join(",") },
+    });
   };
 
   /**
@@ -121,15 +136,29 @@ function Concepts({ accountKey, apiKey, clientId, clientSecret } = {}){
     const path = getDatasetPath(dataset);
     const res = await api.postJson(path, concept);
     return res.json();
-  }
+  };
 
-  const getDatasetPath = id => {
-    if(isUrn(id)){
+  /**
+   * Update an existing concept
+   * @function update
+   * @memberOf Concepts#
+   * @param {string} id - The id of the concept to be updated
+   * @param {Object} patch - object containing any fields to be modified
+   * @returns {Concept} Concept - the updated concept object
+   */
+  this.update = async (id, patch) => {
+    const { type, key } = parseConceptId(id);
+    const res = api.patchJson(`${type}/${key}`, patch);
+    return res.json();
+  };
+
+  const getDatasetPath = (id) => {
+    if (isUrn(id)) {
       const { key } = parseDatasetId(id);
       return key;
     }
     return id;
-  }
+  };
 }
 
 exports = module.exports = Concepts;
@@ -142,10 +171,11 @@ exports = module.exports = Concepts;
  * @property {string} results.id
  */
 
- /**
+/**
  * @typedef Concept Concept
  * @property {string} id
- */</code></pre>
+ */
+</code></pre>
         </article>
     </section>
 
@@ -159,7 +189,7 @@ exports = module.exports = Concepts;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Tue Jan 26 2021 16:29:49 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Tue Jan 26 2021 16:44:29 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
