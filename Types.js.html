@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Datasets.js - Documentation</title>
+    <title>Types.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,7 +34,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Datasets.js</h1>
+    <h1 class="page-title">Types.js</h1>
     
 
     
@@ -47,7 +47,7 @@
             <pre class="prettyprint source linenums"><code>const Api = require('./Api');
 
 /**
- * Datasets
+ * Types
  * @constructor
  * @param {Object} configuration
  * @param {string} configuration.accountKey Your DataGraphs account key
@@ -55,31 +55,27 @@
  * @param {string} configuration.clientId - Your DataGraphs application client id
  * @param {string} configuration.clientSecret - Your DataGraphs application client secret
  */
-function Datasets({ accountKey, apiKey, clientId, clientSecret } = {}){
+function Types({ accountKey, apiKey, clientId, clientSecret } = {}){
   const api = new Api({ accountKey, apiKey, clientId, clientSecret });
 
   /**
-   * Get all datasets
+   * Get all types
    * @function all
-   * @memberOf Datasets#
-   * @param {Object} options
-   * @param {number} [options.pageSize=10] - Number of results to return per page
-   * @param {number} [options.pageNo=1] - Which page of results to return
-   * @param {string} [options.sort] - Sort order in the format {property1}:{asc|desc},{property2}:{asc|desc}
-   * @returns {DatasetSearchResults} Search Results
+   * @memberOf Types#
+   * @returns {Type[]} Types
    */
-  this.all = ({ pageSize, pageNo, sort } = {}) => api.getJson('', { qs: { pageSize, pageNo, sort } });
+  this.all = () => api.getJson('_types');
 }
 
-exports = module.exports = Datasets;
+exports = module.exports = Types;
 
 /**
- * @typedef DatasetSearchResults Dataset Search Results
- * @property {Object} search
- * @property {number} search.totalResults
- * @property {Object[]} results
- * @property {string} results.id
- * @property {string} results.name
+ * @typedef Type Type Search Results
+ * @property {string} id
+ * @property {string} label
+ * @property {string[]} parentTypes - Ids of parent types
+ * @property {Date} createdDate - The date the type was created
+ * @property {Date} lastModifiedDate - The date the type was last modified
  */</code></pre>
         </article>
     </section>
