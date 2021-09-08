@@ -29,7 +29,7 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h2><a href="https://datagraphs.com" target="_blank" class="menu-item" id="website_link" >Data Graphs</a></h2><h2><a href="https://github.com/datalanguage/datagraphs-client-js" target="_blank" class="menu-item" id="website_link" >Github Repo</a></h2><h3>Classes</h3><ul><li><a href="ApiError.html">ApiError</a></li><li><a href="Candidates.html">Candidates</a><ul class='methods'><li data-type='method'><a href="Candidates.html#create">create</a></li></ul></li><li><a href="Concepts.html">Concepts</a><ul class='methods'><li data-type='method'><a href="Concepts.html#create">create</a></li><li data-type='method'><a href="Concepts.html#get">get</a></li><li data-type='method'><a href="Concepts.html#search">search</a></li><li data-type='method'><a href="Concepts.html#update">update</a></li></ul></li><li><a href="ConfigurationError.html">ConfigurationError</a></li><li><a href="DataGraphs.html">DataGraphs</a></li><li></li><li><a href="DataGraphsError.html">DataGraphsError</a></li><li><a href="Datasets.html">Datasets</a><ul class='methods'><li data-type='method'><a href="Datasets.html#all">all</a></li></ul></li><li><a href="InvalidUrnError.html">InvalidUrnError</a></li><li><a href="Types.html">Types</a><ul class='methods'><li data-type='method'><a href="Types.html#all">all</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://datagraphs.com" target="_blank" class="menu-item" id="website_link" >Data Graphs</a></h2><h2><a href="https://github.com/datalanguage/datagraphs-client-js" target="_blank" class="menu-item" id="website_link" >Github Repo</a></h2><h3>Classes</h3><ul><li><a href="ApiError.html">ApiError</a></li><li><a href="Candidates.html">Candidates</a><ul class='methods'><li data-type='method'><a href="Candidates.html#create">create</a></li></ul></li><li><a href="Concepts.html">Concepts</a><ul class='methods'><li data-type='method'><a href="Concepts.html#create">create</a></li><li data-type='method'><a href="Concepts.html#createBulk">createBulk</a></li><li data-type='method'><a href="Concepts.html#delete">delete</a></li><li data-type='method'><a href="Concepts.html#get">get</a></li><li data-type='method'><a href="Concepts.html#replace">replace</a></li><li data-type='method'><a href="Concepts.html#search">search</a></li><li data-type='method'><a href="Concepts.html#update">update</a></li><li data-type='method'><a href="Concepts.html#upsert">upsert</a></li><li data-type='method'><a href="Concepts.html#upsertBulk">upsertBulk</a></li></ul></li><li><a href="ConfigurationError.html">ConfigurationError</a></li><li><a href="DataGraphs.html">DataGraphs</a></li><li></li><li><a href="DataGraphsError.html">DataGraphsError</a></li><li><a href="Datasets.html">Datasets</a><ul class='methods'><li data-type='method'><a href="Datasets.html#all">all</a></li></ul></li><li><a href="InvalidUrnError.html">InvalidUrnError</a></li><li><a href="Types.html">Types</a><ul class='methods'><li data-type='method'><a href="Types.html#all">all</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <div id="main">
@@ -566,6 +566,372 @@
 
     
 
+    <h4 class="name" id="createBulk"><span class="type-signature"></span>createBulk<span class="signature">(dataset, concepts)</span><span class="type-signature"> &rarr; {<a href="global.html#BulkRequestResults">BulkRequestResults</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Concepts.js.html">Concepts.js</a>, <a href="Concepts.js.html#line95">line 95</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Create new concepts
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dataset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Id of the dataset the new concepts should be added to</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>concepts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The new concept. This must meet the requirements of the dataset schema
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Required if the dataset contains more than 1 type</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    result
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#BulkRequestResults">BulkRequestResults</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="delete"><span class="type-signature"></span>delete<span class="signature">(id)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Concepts.js.html">Concepts.js</a>, <a href="Concepts.js.html#line171">line 171</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Delete a concept
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The id of the concept to be deleted</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(id, options<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="global.html#Concept">Concept</a>}</span></h4>
 
     
@@ -780,6 +1146,187 @@
 </table>
 
             </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Concept
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#Concept">Concept</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="replace"><span class="type-signature"></span>replace<span class="signature">(id, concept)</span><span class="type-signature"> &rarr; {<a href="global.html#Concept">Concept</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Concepts.js.html">Concepts.js</a>, <a href="Concepts.js.html#line157">line 157</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Replace an existing concept
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The id of the concept to be updated</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>concept</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">object containing the new state of the concept</td>
         </tr>
 
     
@@ -1416,7 +1963,7 @@
 
     
 
-    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(id, patch)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="update"><span class="type-signature"></span>update<span class="signature">(id, patch)</span><span class="type-signature"> &rarr; {<a href="global.html#Concept">Concept</a>}</span></h4>
 
     
 
@@ -1428,7 +1975,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Concepts.js.html">Concepts.js</a>, <a href="Concepts.js.html#line95">line 95</a>
+        <a href="Concepts.js.html">Concepts.js</a>, <a href="Concepts.js.html#line143">line 143</a>
     </li></ul></dd>
     
 
@@ -1571,7 +2118,7 @@
 
         
 <div class="param-desc">
-    statuscode - http response statuscode e.g. 200 for OK
+    Concept
 </div>
 
 
@@ -1582,7 +2129,467 @@
     </dt>
     <dd>
         
-<span class="param-type">number</span>
+<span class="param-type"><a href="global.html#Concept">Concept</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="upsert"><span class="type-signature"></span>upsert<span class="signature">(dataset, concept)</span><span class="type-signature"> &rarr; {<a href="global.html#Concept">Concept</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Concepts.js.html">Concepts.js</a>, <a href="Concepts.js.html#line111">line 111</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Upsert a concept
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dataset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Id of the dataset the concept belongs</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>concept</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The concept. This must meet the requirements of the dataset schema
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Required if the dataset contains more than 1 type</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Concept
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#Concept">Concept</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="upsertBulk"><span class="type-signature"></span>upsertBulk<span class="signature">(dataset, concepts)</span><span class="type-signature"> &rarr; {<a href="global.html#BulkRequestResults">BulkRequestResults</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Concepts.js.html">Concepts.js</a>, <a href="Concepts.js.html#line127">line 127</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    Upsert concepts
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dataset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Id of the dataset the concept belongs</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>concepts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The concepts. This must meet the requirements of the dataset schema
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Required if the dataset contains more than 1 type</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    result
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#BulkRequestResults">BulkRequestResults</a></span>
 
 
     </dd>
@@ -1612,7 +2619,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Wed Jun 23 2021 16:20:39 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Wed Sep 08 2021 10:31:52 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

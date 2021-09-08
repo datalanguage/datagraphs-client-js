@@ -29,7 +29,7 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h2><a href="https://datagraphs.com" target="_blank" class="menu-item" id="website_link" >Data Graphs</a></h2><h2><a href="https://github.com/datalanguage/datagraphs-client-js" target="_blank" class="menu-item" id="website_link" >Github Repo</a></h2><h3>Classes</h3><ul><li><a href="ApiError.html">ApiError</a></li><li><a href="Candidates.html">Candidates</a><ul class='methods'><li data-type='method'><a href="Candidates.html#create">create</a></li></ul></li><li><a href="Concepts.html">Concepts</a><ul class='methods'><li data-type='method'><a href="Concepts.html#create">create</a></li><li data-type='method'><a href="Concepts.html#get">get</a></li><li data-type='method'><a href="Concepts.html#search">search</a></li><li data-type='method'><a href="Concepts.html#update">update</a></li></ul></li><li><a href="ConfigurationError.html">ConfigurationError</a></li><li><a href="DataGraphs.html">DataGraphs</a></li><li></li><li><a href="DataGraphsError.html">DataGraphsError</a></li><li><a href="Datasets.html">Datasets</a><ul class='methods'><li data-type='method'><a href="Datasets.html#all">all</a></li></ul></li><li><a href="InvalidUrnError.html">InvalidUrnError</a></li><li><a href="Types.html">Types</a><ul class='methods'><li data-type='method'><a href="Types.html#all">all</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://datagraphs.com" target="_blank" class="menu-item" id="website_link" >Data Graphs</a></h2><h2><a href="https://github.com/datalanguage/datagraphs-client-js" target="_blank" class="menu-item" id="website_link" >Github Repo</a></h2><h3>Classes</h3><ul><li><a href="ApiError.html">ApiError</a></li><li><a href="Candidates.html">Candidates</a><ul class='methods'><li data-type='method'><a href="Candidates.html#create">create</a></li></ul></li><li><a href="Concepts.html">Concepts</a><ul class='methods'><li data-type='method'><a href="Concepts.html#create">create</a></li><li data-type='method'><a href="Concepts.html#createBulk">createBulk</a></li><li data-type='method'><a href="Concepts.html#delete">delete</a></li><li data-type='method'><a href="Concepts.html#get">get</a></li><li data-type='method'><a href="Concepts.html#replace">replace</a></li><li data-type='method'><a href="Concepts.html#search">search</a></li><li data-type='method'><a href="Concepts.html#update">update</a></li><li data-type='method'><a href="Concepts.html#upsert">upsert</a></li><li data-type='method'><a href="Concepts.html#upsertBulk">upsertBulk</a></li></ul></li><li><a href="ConfigurationError.html">ConfigurationError</a></li><li><a href="DataGraphs.html">DataGraphs</a></li><li></li><li><a href="DataGraphsError.html">DataGraphsError</a></li><li><a href="Datasets.html">Datasets</a><ul class='methods'><li data-type='method'><a href="Datasets.html#all">all</a></li></ul></li><li><a href="InvalidUrnError.html">InvalidUrnError</a></li><li><a href="Types.html">Types</a><ul class='methods'><li data-type='method'><a href="Types.html#all">all</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <div id="main">
@@ -139,18 +139,91 @@ function Concepts({ accountKey, apiKey, clientId, clientSecret } = {}) {
   };
 
   /**
+   * Create new concepts
+   * @function createBulk
+   * @memberOf Concepts#
+   * @param {string} dataset - Id of the dataset the new concepts should be added to
+   * @param {Object[]} concepts - The new concept. This must meet the requirements of the dataset schema
+   * @param {string} concepts.type - Required if the dataset contains more than 1 type
+   * @returns {BulkRequestResults} result
+   */
+   this.createBulk = async (dataset, concepts) => {
+    checkCredentials({ clientId, clientSecret });
+    const path = getDatasetPath(dataset);
+    const res = await api.postJson(path, concepts);
+    return res.json();
+  };
+
+  /**
+   * Upsert a concept
+   * @function upsert
+   * @memberOf Concepts#
+   * @param {string} dataset - Id of the dataset the concept belongs
+   * @param {Object} concept - The concept. This must meet the requirements of the dataset schema
+   * @param {string} concept.type - Required if the dataset contains more than 1 type
+   * @returns {Concept} Concept
+   */
+   this.upsert = async (dataset, concept) => {
+    checkCredentials({ clientId, clientSecret });
+    const path = getDatasetPath(dataset);
+    const res = await api.putJson(path, concept);
+    return res.json();
+  };
+
+  /**
+   * Upsert concepts
+   * @function upsertBulk
+   * @memberOf Concepts#
+   * @param {string} dataset - Id of the dataset the concept belongs
+   * @param {Object[]} concepts - The concepts. This must meet the requirements of the dataset schema
+   * @param {string} concepts.type - Required if the dataset contains more than 1 type
+   * @returns {BulkRequestResults} result
+   */
+   this.upsertBulk = async (dataset, concepts) => {
+    checkCredentials({ clientId, clientSecret });
+    const path = getDatasetPath(dataset);
+    const res = await api.putJson(path, concepts);
+    return res.json();
+  };
+
+  /**
    * Update an existing concept
    * @function update
    * @memberOf Concepts#
    * @param {string} id - The id of the concept to be updated
    * @param {Object} patch - object containing any fields to be modified
-   * @returns {number} statuscode - http response statuscode e.g. 200 for OK
+   * @returns {Concept} Concept
    */
   this.update = async (id, patch) => {
     const { type, key } = parseConceptId(id);
     const res = await api.patchJson(`${type}/${key}`, patch);
-    return res.status;
+    return res.json();
   };
+
+  /**
+   * Replace an existing concept
+   * @function replace
+   * @memberOf Concepts#
+   * @param {string} id - The id of the concept to be updated
+   * @param {Object} concept - object containing the new state of the concept
+   * @returns {Concept} Concept
+   */
+   this.replace = async (id, concept) => {
+    const { type, key } = parseConceptId(id);
+    const res = await api.putJson(`${type}/${key}`, concept);
+    return res.json();
+  };
+
+  /**
+   * Delete a concept
+   * @function delete
+   * @memberOf Concepts#
+   * @param {string} id - The id of the concept to be deleted
+   */
+  this.delete = async (id) => {
+    const { type, key } = parseConceptId(id);
+    await api.delete(`${type}/${key}`);
+  }
 
   const getDatasetPath = (id) => {
     if (isUrn(id)) {
@@ -175,6 +248,14 @@ exports = module.exports = Concepts;
  * @typedef Concept Concept
  * @property {string} id
  */
+
+/**
+ * @typedef BulkRequestResults Bulk Request Results
+ * @property {number} created - The number of new concepts created
+ * @property {number} updated - The number of existing concepts that were updated
+ * @property {number} existing - The number of concepts that were ignored because they already exist
+ * @property {number} total - The total number of concepts that were created or updated
+ */
 </code></pre>
         </article>
     </section>
@@ -189,7 +270,7 @@ exports = module.exports = Concepts;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Wed Jun 23 2021 16:20:39 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Wed Sep 08 2021 10:31:52 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

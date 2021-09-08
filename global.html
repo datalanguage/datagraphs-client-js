@@ -29,7 +29,7 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h2><a href="https://datagraphs.com" target="_blank" class="menu-item" id="website_link" >Data Graphs</a></h2><h2><a href="https://github.com/datalanguage/datagraphs-client-js" target="_blank" class="menu-item" id="website_link" >Github Repo</a></h2><h3>Classes</h3><ul><li><a href="ApiError.html">ApiError</a></li><li><a href="Candidates.html">Candidates</a><ul class='methods'><li data-type='method'><a href="Candidates.html#create">create</a></li></ul></li><li><a href="Concepts.html">Concepts</a><ul class='methods'><li data-type='method'><a href="Concepts.html#create">create</a></li><li data-type='method'><a href="Concepts.html#get">get</a></li><li data-type='method'><a href="Concepts.html#search">search</a></li><li data-type='method'><a href="Concepts.html#update">update</a></li></ul></li><li><a href="ConfigurationError.html">ConfigurationError</a></li><li><a href="DataGraphs.html">DataGraphs</a></li><li></li><li><a href="DataGraphsError.html">DataGraphsError</a></li><li><a href="Datasets.html">Datasets</a><ul class='methods'><li data-type='method'><a href="Datasets.html#all">all</a></li></ul></li><li><a href="InvalidUrnError.html">InvalidUrnError</a></li><li><a href="Types.html">Types</a><ul class='methods'><li data-type='method'><a href="Types.html#all">all</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://datagraphs.com" target="_blank" class="menu-item" id="website_link" >Data Graphs</a></h2><h2><a href="https://github.com/datalanguage/datagraphs-client-js" target="_blank" class="menu-item" id="website_link" >Github Repo</a></h2><h3>Classes</h3><ul><li><a href="ApiError.html">ApiError</a></li><li><a href="Candidates.html">Candidates</a><ul class='methods'><li data-type='method'><a href="Candidates.html#create">create</a></li></ul></li><li><a href="Concepts.html">Concepts</a><ul class='methods'><li data-type='method'><a href="Concepts.html#create">create</a></li><li data-type='method'><a href="Concepts.html#createBulk">createBulk</a></li><li data-type='method'><a href="Concepts.html#delete">delete</a></li><li data-type='method'><a href="Concepts.html#get">get</a></li><li data-type='method'><a href="Concepts.html#replace">replace</a></li><li data-type='method'><a href="Concepts.html#search">search</a></li><li data-type='method'><a href="Concepts.html#update">update</a></li><li data-type='method'><a href="Concepts.html#upsert">upsert</a></li><li data-type='method'><a href="Concepts.html#upsertBulk">upsertBulk</a></li></ul></li><li><a href="ConfigurationError.html">ConfigurationError</a></li><li><a href="DataGraphs.html">DataGraphs</a></li><li></li><li><a href="DataGraphsError.html">DataGraphsError</a></li><li><a href="Datasets.html">Datasets</a><ul class='methods'><li data-type='method'><a href="Datasets.html#all">all</a></li></ul></li><li><a href="InvalidUrnError.html">InvalidUrnError</a></li><li><a href="Types.html">Types</a><ul class='methods'><li data-type='method'><a href="Types.html#all">all</a></li></ul></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <div id="main">
@@ -125,6 +125,186 @@
 
         
                 
+<h4 class="name" id="BulkRequestResults">BulkRequestResults</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Concepts.js.html">Concepts.js</a>, <a href="Concepts.js.html#line206">line 206</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>created</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The number of new concepts created</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>updated</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The number of existing concepts that were updated</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>existing</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The number of concepts that were ignored because they already exist</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>total</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The total number of concepts that were created or updated</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
 <h4 class="name" id="Concept">Concept</h4>
 
 
@@ -136,7 +316,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Concepts.js.html">Concepts.js</a>, <a href="Concepts.js.html#line128">line 128</a>
+        <a href="Concepts.js.html">Concepts.js</a>, <a href="Concepts.js.html#line201">line 201</a>
     </li></ul></dd>
     
 
@@ -247,7 +427,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Concepts.js.html">Concepts.js</a>, <a href="Concepts.js.html#line120">line 120</a>
+        <a href="Concepts.js.html">Concepts.js</a>, <a href="Concepts.js.html#line193">line 193</a>
     </li></ul></dd>
     
 
@@ -938,7 +1118,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Wed Jun 23 2021 16:20:39 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Wed Sep 08 2021 10:31:52 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
