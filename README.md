@@ -72,7 +72,7 @@ Configuration options can either be passed as parameters to the DataGraphs const
 
 | Constructor Property | Environment Variable     | Description                                |
 | -------------------- | ------------------------ | ------------------------------------------ |
-| accountKey           | DATAGRAPHS_ACCOUNT_KEY   | Your Data Graphs account key               |
+| projectId            | DATAGRAPHS_PROJECT_ID    | Your Data Graphs project id                |
 | apiKey               | DATAGRAPHS_API_KEY       | Your Data Graphs application API key       |
 | clientId             | DATAGRAPHS_CLIENT_ID     | Your Data Graphs application client id     |
 | clientSecret         | DATAGRAPHS_CLIENT_SECRET | Your Data Graphs application client secret |
@@ -81,7 +81,7 @@ Below is an example of passing these parameters to the Data Graphs client constr
 
 ```js
 const datagraphs = new DataGraphs({
-  accountKey: "my-test-account",
+  projectId: "my-test-project",
   apiKey: "bZiDs4.....",
   clientId: "sR5dfR.....",
   clientSecret: "pRM6kR.....",

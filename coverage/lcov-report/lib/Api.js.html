@@ -210,8 +210,8 @@ const ConfigurationError = require("./errors/ConfigurationError");
 const queryString = require("query-string");
 const logger = require('loglevel');
 &nbsp;
-function API({ accountKey, apiKey, clientId, clientSecret } = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
-  if (!accountKey) throw new ConfigurationError("Account Key is required");
+function API({ projectId, apiKey, clientId, clientSecret } = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
+  if (!projectId) throw new ConfigurationError("Project Id is required");
   if (!apiKey) throw new ConfigurationError("API Key is required");
 &nbsp;
   const authenticator = new Authenticator({ apiKey, clientId, clientSecret });
@@ -258,7 +258,7 @@ function API({ accountKey, apiKey, clientId, clientSecret } = <span class="branc
   };
 &nbsp;
   const buildUrl = (path, qs) =&gt; {
-    const url = `${host}/${accountKey}/${path}`;
+    const url = `${host}/${projectId}/${path}`;
     if (!qs) return url;
     return url + "?" + queryString.stringify(qs);
   };

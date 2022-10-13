@@ -99,15 +99,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const InvalidUrnError = require("../errors/InvalidUrnError");
 &nbsp;
 const parseDatasetId = id =&gt; {
-  if(!id.match(/^urn:.+:.+$/)) throw new InvalidUrnError(`Id should be in the form "urn:{account}:{dataset}"`);
-  const [, account, key] = id.split(':');
-  return { account, key };
+  if(!id.match(/^urn:.+:.+$/)) throw new InvalidUrnError(`Id should be in the form "urn:{project}:{dataset}"`);
+  const [, project, key] = id.split(':');
+  return { project, key };
 }
 &nbsp;
 const parseConceptId = id =&gt; {
-  if(!id.match(/^urn:.+:.+:.+$/)) throw new InvalidUrnError(`Id should be in the form "urn:{account}:{dataset}:{identifier}"`);
-  const [, account, type, ...rest] = id.split(':');
-  return { account, type, key: rest.join(':') };
+  if(!id.match(/^urn:.+:.+:.+$/)) throw new InvalidUrnError(`Id should be in the form "urn:{project}:{dataset}:{identifier}"`);
+  const [, project, type, ...rest] = id.split(':');
+  return { project, type, key: rest.join(':') };
 }
 &nbsp;
 const isUrn = <span class="fstat-no" title="function not covered" >id</span> =&gt; <span class="cstat-no" title="statement not covered" >id.startsWith('urn:');</span>
