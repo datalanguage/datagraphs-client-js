@@ -2,7 +2,7 @@
 
 API Client library for [Data Graphs](https://datagraphs.com)
 
-Documentation for the Data Graphs API can be found under the `Developer Docs` section of the [Data Graphs App](https://app.datagraphs.io)
+Documentation for the Data Graphs API can be found here [Data Graphs Support](https://support.datagraphs.io)
 
 ## Install
 
