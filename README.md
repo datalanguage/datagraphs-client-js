@@ -4,6 +4,10 @@ API Client library for [Data Graphs](https://datagraphs.com)
 
 Documentation for the Data Graphs API can be found here [Data Graphs Support](https://support.datagraphs.io)
 
+## Supply-chain safeguards
+
+`.npmrc` sets `ignore-scripts=true` so dependency install scripts never run during `npm ci` — including in the GitHub Actions publish jobs, where the npm publish token is in the environment. Do not remove this setting.
+
 ## Install
 
 ```sh
